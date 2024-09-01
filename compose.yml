@@ -1,0 +1,20 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: hospital_system_database
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: hospital_db
+      MYSQL_USER: db_user
+      MYSQL_PASSWORD: db_password
+    volumes:
+      - ./db/migrations:/docker-entrypoint-initdb.d/setup_db.sql:ro
+      - ./db/data/mysql:/var/lib/mysql
+    ports:
+      - "33006:3306"
+    networks:
+      - hospital_system
+
+networks:
+  hospital_system:
+    driver: bridge

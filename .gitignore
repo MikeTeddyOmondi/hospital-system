@@ -1,0 +1,11 @@
+# Generated files, folders & artifacts
+/node_modules
+
+# Ignore all contents within the mysql data directory
+db/data/mysql/*
+
+# But do not ignore the directory itself
+!db/data/mysql/.gitkeep
+
+# secrets
+.env
