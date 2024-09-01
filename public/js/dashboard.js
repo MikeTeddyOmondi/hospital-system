@@ -399,5 +399,5 @@ let areaChartOptions = {
   }
 };
 
-var areaChart = new ApexCharts(document.querySelector("#area-chart"), areaChartOptions);
+let areaChart = new ApexCharts(document.querySelector("#area-chart"), areaChartOptions);
 areaChart.render();
