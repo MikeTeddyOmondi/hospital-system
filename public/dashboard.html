@@ -3,23 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - My Express App</title>
-    <link rel="stylesheet" href="/styles.css">
+    <title>Dashboard - Hospital System</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="/css/dashboard.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to Hospital System</h1>
+    <!-- <header>
         <nav>
             <a href="/">Home</a>
             <a href="/about">About</a>
             <a href="/contact">Contact</a>
         </nav>
-    </header>
-    <main>
-        <p>This is the homepage of my awesome Express app!</p>
-    </main>
-    <footer>
-        <p>&copy; 2024 Hospital System. All rights reserved.</p>
-    </footer>
+    </header> -->
+    <!-- <main>
+        <section>
+          <h1>Welcome to Hospital System</h1>
+          <p>Welcome to our online hospital services</p>
+        </section>
+        <section>
+          <div>
+            <canvas id="visitorBarChart"></canvas>
+          </div>
+        </section>
+    </main> -->
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined bouncy-button">menu</span> 
+        </div>
+        <div class="header-left">
+          <span class="material-icons-outlined">search</span>
+        </div>
+        <div class="header-right">
+          <span class="material-icons-outlined">notifications</span>
+          <span class="material-icons-outlined">email</span>
+          <span class="material-icons-outlined">account_circle</span>
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="material-icons-outlined">monitor_heart</span>
+          </div>
+          <span class="material-icons-outlined bouncy-button" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+            <span class="material-icons-outlined">dashboard</span> Dashboard
+          </li>
+          <li class="sidebar-list-item">
+            <span class="material-icons-outlined">personal_injury</span> Patients
+          </li>
+          <li class="sidebar-list-item">
+            <span class="material-icons-outlined">tour</span> Visits
+          </li>
+          <li class="sidebar-list-item">
+            <span class="material-icons-outlined">emergency</span> Emergency Visits
+          </li>
+          <li class="sidebar-list-item">
+            <span class="material-icons-outlined">fact_check</span> Providers
+          </li>
+          <li class="sidebar-list-item">
+            <span class="material-icons-outlined">poll</span> Reports
+          </li>
+          <li class="sidebar-list-item">
+            <span class="material-icons-outlined">settings</span> Settings
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+          <h2>DASHBOARD</h2>
+        </div>
+
+        <div class="main-cards">
+
+          <div class="card">
+            <div class="card-inner">
+              <h3>Patients</h3>
+              <span class="material-icons-outlined">personal_injury</span>
+            </div>
+            <h1>249</h1>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <h3>VISITS</h3>
+              <span class="material-icons-outlined">tour</span>
+            </div>
+            <h1>12</h1>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <h3>PROVIDERS</h3>
+              <span class="material-icons-outlined">groups</span>
+            </div>
+            <h1>7</h1>
+          </div>
+
+          <div class="card">
+            <div class="card-inner">
+              <h3>ALERTS</h3>
+              <span class="material-icons-outlined">notification_important</span>
+            </div>
+            <h1>3</h1>
+          </div>
+
+        </div>
+
+        <div class="charts">
+
+          <div class="charts-card">
+            <h2 class="chart-title">Top 5 Providers</h2>
+            <div id="bar-chart"></div>
+          </div>
+
+          <div class="charts-card">
+            <h2 class="chart-title">In and Out Patients</h2>
+            <div id="area-chart"></div>
+          </div>
+
+        </div>
+      </main>
+      <!-- End Main -->
+      <footer>
+          <p>&copy; 2024 Hospital System. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/dashboard.js"></script>
 </body>
 </html>

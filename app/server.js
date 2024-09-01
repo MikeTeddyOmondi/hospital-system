@@ -5,7 +5,7 @@ import session from 'express-session';
 import MySQLStore from 'express-mysql-session';
 
 import pool from './db.js';
-import { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER } from '../config.js';
+import { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER, SESSION_SECRET } from '../config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve static files from the "public" directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Session Store Options
 const sessionStoreOptions = {
@@ -42,7 +42,7 @@ sessionStore.onReady().then(() => {
 // Session middleware
 app.use(session({
   key: 'user_sid',
-  secret: 'your_secret_key',
+  secret: SESSION_SECRET,
   store: sessionStore,
   resave: false,
   saveUninitialized: false,
@@ -73,44 +73,53 @@ app.get('/register', (req, res) => {
 });
 
 // Login route
-app.post('/api/patients/login', async (req, res) => {
+app.post('/api/users/login', async (req, res) => {
   const { email, password } = req.body;
   try {
     const [rows] = await pool.query('SELECT * FROM users WHERE email = ? AND password = ?', [email, password]);
     if (rows.length > 0) {
       req.session.userId = rows[0].user_id;
-      res.redirect('/dashboard');
+      // res.redirect('/dashboard');
+      res.status(200).json({ success: true, message: "Login successful!" })
     } else {
-      res.redirect('/login');
+      // res.redirect('/login');
+      res.status(400).json({ success: false, message: "User not found" })
     }
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.log({ login_error: err.message })
+    res.status(500).json({ success: false, error: "Something went wrong!" });
   }
 });
 
 // Register route
-app.post('/api/patients/register', async (req, res) => {
+app.post('/api/users/register', async (req, res) => {
   const { username, email, password } = req.body;
-  // console.log({ username, email, password })
   try {
+    const [rows] = await pool.query('SELECT * FROM users WHERE email = ?', [email]);
+    if (rows.length > 0) {
+      res.status(500).json({ success: false, error: "User already exists!" });
+      return;
+    }
     const [result] = await pool.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, password]);
     req.session.userId = result.insertId;
-    res.redirect('/dashboard');
+    // res.redirect('/dashboard');
+    res.status(200).json({ success: true, message: "Signup successful!" })
   } catch (err) {
-    console.log({ registration_error: err })
-    res.status(500).json({ error: err.message });
+    console.log({ registration_error: err.message })
+    res.status(500).json({ success: false, error: "Something went wrong!" });
   }
 });
 
 // Logout route
-app.get('/logout', (req, res) => {
+app.get('/api/users/logout', (req, res) => {
   if (req.session) {
     req.session.destroy(err => {
       if (err) {
-        res.status(500).json({ error: 'Logout failed' });
+        res.status(500).json({ success: false, error: 'Logout failed' });
       } else {
         res.clearCookie('user_sid');
-        res.redirect('/login');
+        // res.redirect('/login');
+        res.status(200).json({ success: true, message: "Logout successful!" })
       }
     });
   }

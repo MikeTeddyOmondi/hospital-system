@@ -26,4 +26,4 @@ if (!env.success) {
 }
 
 // Destructure validated and typed environment variables
-export const { DB_HOST, DB_USER, DB_PASSWORD, DB_PORT, DB_NAME, NODE_ENV, PORT } = env.data;
+export const { DB_HOST, DB_USER, DB_PASSWORD, DB_PORT, DB_NAME, NODE_ENV, SESSION_SECRET, PORT } = env.data;

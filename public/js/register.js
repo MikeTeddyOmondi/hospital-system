@@ -1,49 +1,56 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("form");
-    const authMsg = document.getElementById("auth-msg");
+  const form = document.getElementById("signup-form");
+  const authMsg = document.getElementById("auth-msg");
 
-    form.addEventListener("submit", async (event) => {
-        event.preventDefault();
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
 
-        // Collect form data
-        const email = document.getElementById("email").value;
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("password").value;
+    // Collect form data
+    const email = document.getElementById("email").value;
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
 
-        const data = {
-            email,
-            username,
-            password,
-        };
+    if (password !== confirmPassword) {
+      authMsg.textContent = "Passwords do not match.";
+      authMsg.style.color = "red";
+      return;
+    }
 
-        try {
-            // Send POST request
-            const response = await fetch(
-                "/api/user/register",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(data),
-                },
-            );
+    const data = {
+      email,
+      username,
+      password,
+    };
 
-            // Parse response
-            const result = await response.json();
+    try {
+      // Send POST request
+      const response = await fetch(
+        "/api/users/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        },
+      );
 
-            if (response.ok && result.message === "Registration successfull") {
-                // Redirect to login page
-                window.location.href = "../html/login.html";
-            } else {
-                // Show error message
-                authMsg.textContent = "Registration failed. Please try again.";
-                authMsg.style.color = "red";
-            }
-        } catch (error) {
-            // Handle network or server errors
-            authMsg.textContent = "An error occurred. Please try again.";
-            authMsg.style.color = "red";
-        }
-    });
+      // Parse response
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        // Redirect to login page
+        // window.location.href = "/dashboard";
+      } else {
+        // Show error message
+        authMsg.textContent = `${result.error}`;
+        authMsg.style.color = "red";
+      }
+    } catch (error) {
+      // Handle network or server errors
+      authMsg.textContent = "An error occurred. Please try again.";
+      authMsg.style.color = "red";
+    }
+  });
 });
