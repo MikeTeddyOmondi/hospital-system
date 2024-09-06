@@ -84,6 +84,10 @@ app.get('/patients', checkAuth, (req, res) => {
   return res.sendFile(path.join(__dirname, '..', 'public', 'patients.html'));
 });
 
+app.get('/appointments', checkAuth, (req, res) => {
+  return res.sendFile(path.join(__dirname, '..', 'public', 'appointments.html'));
+});
+
 app.get('/visits', checkAuth, (req, res) => {
   return res.sendFile(path.join(__dirname, '..', 'public', 'visits.html'));
 });

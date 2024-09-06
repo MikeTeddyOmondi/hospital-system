@@ -7,6 +7,10 @@ function goToPatientsPage() {
   window.location.href = "/patients"
 }
 
+function goToAppointmentsPage() {
+  window.location.href = "/appointments"
+}
+
 function goToVisitsPage() {
   window.location.href = "/visits"
 }
