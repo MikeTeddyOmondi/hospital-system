@@ -1,12 +1,30 @@
 services:
+  app:
+    image: hospital-system:latest
+    container_name: hospital_system
+    ports:
+      - "6677:6677"
+    environment:
+      SESSION_SECRET: ${SESSION_SECRET}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_USER: ${DB_USER}
+      DB_NAME: ${DB_NAME}
+      DB_PORT: 3306
+      DB_HOST: db
+    networks:
+      - hospital_system
+    depends_on:
+      db:
+        condition: service_healthy
+    
   db:
     image: mysql:8.0
     container_name: hospital_system_database
     environment:
-      MYSQL_ROOT_PASSWORD: root_password
-      MYSQL_DATABASE: hospital_db
-      MYSQL_USER: db_user
-      MYSQL_PASSWORD: db_password
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      MYSQL_USER: ${DB_USER} 
+      MYSQL_PASSWORD: ${DB_PASSWORD}
     volumes:
       - ./db/migrations:/docker-entrypoint-initdb.d/setup_db.sql:ro
       - ./db/data/mysql:/var/lib/mysql
@@ -14,7 +32,14 @@ services:
       - "33006:3306"
     networks:
       - hospital_system
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      retries: 10
+      interval: 2s
+      timeout: 15s
+      start_period: 5s
 
 networks:
   hospital_system:
+    name: hospital_system
     driver: bridge

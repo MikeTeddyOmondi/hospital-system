@@ -8,6 +8,6 @@ const pool = mysql.createPool({
     password: DB_PASSWORD,
     database: DB_NAME,
     port: DB_PORT
-});
+}).promise();
 
-export  default pool.promise();
+export  default pool;

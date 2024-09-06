@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("login-form");
   const authMsg = document.getElementById("auth-msg");
+  const formInput = document.querySelector("input");
+  
+  formInput.addEventListener("change", () => {
+    authMsg.textContent = '';
+  })
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -17,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       // Send POST request
       const response = await fetch(
-        "/api/users/login",
+        "/api/v1/users/login",
         {
           method: "POST",
           headers: {

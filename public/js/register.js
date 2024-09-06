@@ -1,6 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("signup-form");
-  const authMsg = document.getElementById("auth-msg");
+  let form = document.getElementById("signup-form");
+  let authMsg = document.getElementById("auth-msg");
+  let formInput = document.getElementsByTagName("input");
+  let formSubmitBtn = document.getElementById("formSubmitBtn");
+  
+  formInput.addEventListener("focus", () => {
+    authMsg.textContent = '';
+  })
+  
+  // formSubmitBtn.addEventListener("click", () => {
+    
+  // })
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -11,8 +21,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
 
+    if (!email || !username || !password) {
+      authMsg.textContent = "Please enter all the fields!";
+      authMsg.style.color = "red";
+      return;
+    }
+    
     if (password !== confirmPassword) {
-      authMsg.textContent = "Passwords do not match.";
+      authMsg.textContent = "Passwords do not match!";
       authMsg.style.color = "red";
       return;
     }
@@ -26,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       // Send POST request
       const response = await fetch(
-        "/api/users/register",
+        "/api/v1/users/register",
         {
           method: "POST",
           headers: {
@@ -41,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (response.ok && result.success) {
         // Redirect to login page
-        // window.location.href = "/dashboard";
+        window.location.href = "/dashboard";
       } else {
         // Show error message
         authMsg.textContent = `${result.error}`;
