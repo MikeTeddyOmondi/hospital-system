@@ -80,6 +80,30 @@ app.get('/dashboard', checkAuth, (req, res) => {
   return res.sendFile(path.join(__dirname, '..', 'public', 'dashboard.html'));
 });
 
+app.get('/patients', checkAuth, (req, res) => {
+  return res.sendFile(path.join(__dirname, '..', 'public', 'patients.html'));
+});
+
+app.get('/visits', checkAuth, (req, res) => {
+  return res.sendFile(path.join(__dirname, '..', 'public', 'visits.html'));
+});
+
+app.get('/emergency-visits', checkAuth, (req, res) => {
+  return res.sendFile(path.join(__dirname, '..', 'public', 'edvisits.html'));
+});
+
+app.get('/providers', checkAuth, (req, res) => {
+  return res.sendFile(path.join(__dirname, '..', 'public', 'providers.html'));
+});
+
+app.get('/reports', checkAuth, (req, res) => {
+  return res.sendFile(path.join(__dirname, '..', 'public', 'reports.html'));
+});
+
+app.get('/settings', checkAuth, (req, res) => {
+  return res.sendFile(path.join(__dirname, '..', 'public', 'settings.html'));
+});
+
 // API routes
 app.use("/api/v1", router);
 
