@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #009579
+  --primary-color: #009579;
 }
 
 body {
@@ -7,7 +7,7 @@ body {
   padding: 0;
   background-color: var(--primary-color);
   color: #fff;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .material-icons-outlined {
@@ -22,11 +22,10 @@ body {
   grid-template-columns: 260px 1fr 1fr 1fr;
   grid-template-rows: 0.2fr 3fr;
   grid-template-areas:
-    "sidebar header header header"
-    "sidebar main main main";
+    'sidebar header header header'
+    'sidebar main main main';
   height: 100vh;
 }
-
 
 /* ---------- HEADER ---------- */
 .header {
@@ -42,7 +41,6 @@ body {
 .menu-icon {
   display: none;
 }
-
 
 /* ---------- SIDEBAR ---------- */
 
@@ -64,7 +62,7 @@ body {
   margin-bottom: 30px;
 }
 
-.sidebar-title>span {
+.sidebar-title > span {
   display: none;
 }
 
@@ -95,7 +93,6 @@ body {
   position: absolute;
   z-index: 12 !important;
 }
-
 
 /* ---------- MAIN ---------- */
 
@@ -148,7 +145,7 @@ body {
   justify-content: space-between;
 }
 
-.card-inner>.material-icons-outlined {
+.card-inner > .material-icons-outlined {
   font-size: 45px;
 }
 
@@ -176,6 +173,71 @@ body {
   justify-content: center;
 }
 
+/* Section styling */
+section {
+  margin: 20px 0;
+  padding: 20px;
+  /* max-width: 60%; */
+  background: var(--primary-color);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Form styling */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-bottom: 4px;
+  font-weight: bold;
+  color: #000;
+}
+
+form input {
+  padding: 8px;
+  margin-bottom: 2px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+form input[type='submit'] {
+  background: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 16px;
+}
+
+form input[type='submit']:hover {
+  background: #555;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table tbody#patients-table {
+    /* background: #f4f4f4; */
+    overflow-x: scroll;
+}
+
 footer {
   background-color: #009579;
   color: white;
@@ -200,7 +262,7 @@ footer {
 }
 
 .bouncy-button:hover {
-  background-color: #007BFF;
+  background-color: #007bff;
 }
 
 /* Bouncy Effect */
@@ -209,7 +271,8 @@ footer {
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   20% {
@@ -235,8 +298,8 @@ footer {
     grid-template-columns: 1fr;
     grid-template-rows: 0.2fr 3fr;
     grid-template-areas:
-      "header"
-      "main";
+      'header'
+      'main';
   }
 
   #sidebar {
@@ -247,11 +310,13 @@ footer {
     display: inline;
   }
 
-  .sidebar-title>span {
+  .sidebar-title > span {
     display: inline;
   }
-}
 
+  /* section {
+  } */
+}
 
 /* Small <= 768px */
 
@@ -266,16 +331,14 @@ footer {
     grid-template-columns: 1fr;
     margin-top: 30px;
   }
-  
+
   .sidebar-responsive {
     display: inline !important;
     position: absolute;
     z-index: 12 !important;
     width: 100%;
   }
-
 }
-
 
 /* Extra Small <= 576px */
 
@@ -283,7 +346,7 @@ footer {
   .header-left {
     display: none;
   }
-  
+
   /* .sidebar-responsive {
     width: 100%;
     position: absolute;
@@ -291,4 +354,3 @@ footer {
     z-index: 12;
   } */
 }
-

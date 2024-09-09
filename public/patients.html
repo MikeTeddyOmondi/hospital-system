@@ -1,28 +1,36 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Patients - Hospital System</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <link rel="stylesheet" href="/css/dashboard.css">
-    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
-</head>
-<body>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
     <div class="grid-container">
-
       <!-- Header -->
       <header class="header">
         <div class="menu-icon" onclick="openSidebar()">
           <span class="material-icons-outlined bouncy-button">menu</span>
         </div>
         <div class="header-left">
-          <span class="material-icons-outlined">search</span>
+          <img class="material-icons-outlined" src="/assets/search.svg" />
         </div>
         <div class="header-right">
-          <img class="material-icons-outlined" src="/assets/notifications.svg"/>
-          <img class="material-icons-outlined" src="/assets/mail.svg"/>
-          <img class="material-icons-outlined" src="/assets/account_circle.svg"/>
+          <img
+            class="material-icons-outlined"
+            src="/assets/notifications.svg"
+          />
+          <img class="material-icons-outlined" src="/assets/mail.svg" />
+          <img
+            class="material-icons-outlined"
+            src="/assets/account_circle.svg"
+          />
         </div>
       </header>
       <!-- End Header -->
@@ -31,35 +39,54 @@
       <aside id="sidebar">
         <div class="sidebar-title">
           <div class="sidebar-brand">
-            <img class="material-icons-outlined" src="/assets/monitor_heart.svg"/> TeleMed
+            <img
+              class="material-icons-outlined"
+              src="/assets/monitor_heart.svg"
+            />
+            TeleMed
           </div>
-          <span class="material-icons-outlined bouncy-button" onclick="closeSidebar()">close</span>
+          <span
+            class="material-icons-outlined bouncy-button"
+            onclick="closeSidebar()"
+            >close</span
+          >
         </div>
 
         <ul class="sidebar-list">
           <li class="sidebar-list-item" onclick="goToDashboard()">
-            <img class="material-icons-outlined" src="/assets/dashboard.svg"/> Dashboard
+            <img class="material-icons-outlined" src="/assets/dashboard.svg" />
+            Dashboard
           </li>
           <li class="sidebar-list-item" onclick="goToPatientsPage()">
-            <img class="material-icons-outlined" src="/assets/patients.svg"/> Patients
+            <img class="material-icons-outlined" src="/assets/patients.svg" />
+            Patients
           </li>
           <li class="sidebar-list-item" onclick="goToAppointmentsPage()">
-            <img class="material-icons-outlined" src="/assets/appointments.svg"/> Appointments
+            <img
+              class="material-icons-outlined"
+              src="/assets/appointments.svg"
+            />
+            Appointments
           </li>
           <li class="sidebar-list-item" onclick="goToVisitsPage()">
-            <img class="material-icons-outlined" src="/assets/visits.svg"/> Visits
+            <img class="material-icons-outlined" src="/assets/visits.svg" />
+            Visits
           </li>
           <li class="sidebar-list-item" onclick="goToEdVisitsPage()">
-            <img class="material-icons-outlined" src="/assets/emergency.svg"/> Emergency Visits
+            <img class="material-icons-outlined" src="/assets/emergency.svg" />
+            Emergency Visits
           </li>
           <li class="sidebar-list-item" onclick="goToProvidersPage()">
-            <img class="material-icons-outlined" src="/assets/providers.svg"/> Providers
+            <img class="material-icons-outlined" src="/assets/providers.svg" />
+            Providers
           </li>
           <li class="sidebar-list-item" onclick="goToReportsPage()">
-            <img class="material-icons-outlined" src="/assets/reports.svg"/> Reports
+            <img class="material-icons-outlined" src="/assets/reports.svg" />
+            Reports
           </li>
           <li class="sidebar-list-item" onclick="goToSettingsPage()">
-            <img class="material-icons-outlined" src="/assets/settings.svg"/> Settings
+            <img class="material-icons-outlined" src="/assets/settings.svg" />
+            Settings
           </li>
         </ul>
       </aside>
@@ -71,10 +98,43 @@
           <h2>PATIENTS</h2>
         </div>
 
+        <section>
+          <h2>Add Patients</h2>
+          <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required /><br /><br />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required /><br /><br />
+
+            <label for="phone">Phone:</label>
+            <input type="tel" id="phone" name="phone" /><br /><br />
+
+            <input type="submit" value="Save" />
+          </form>
+        </section>
+
+        <section>
+          <h2>Patients Information</h2>
+          <table id="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date of Birth</th>
+                    <th>Gender</th>
+                    <th>Language</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="patients-table"></tbody>
+          </table>
+        </section>
       </main>
       <!-- End Main -->
       <footer>
-          <p>&copy; 2024 Hospital System. All rights reserved.</p>
+        <p>&copy; 2024 Hospital System. All rights reserved.</p>
       </footer>
     </div>
 
@@ -82,5 +142,5 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/main.js"></script>
     <script src="./js/dashboard.js"></script>
-</body>
+  </body>
 </html>

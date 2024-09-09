@@ -7,7 +7,7 @@ const router = express.Router()
 // Get all patients
 router.get('/patients', async (req, res) => {
   try {
-    const [rows] = await pool.query('SELECT * FROM patients');
+    const [rows] = await pool.query('SELECT * FROM patients LIMIT 10');
     return res.json(rows);
   } catch (err) {
     return res.status(500).json({ error: err.message });

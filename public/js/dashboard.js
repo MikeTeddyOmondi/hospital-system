@@ -146,60 +146,57 @@
 // }
 
 // IIFE - Immediately Invoked Function Execution
-(async () => {
+;(async () => {
+  await fetchPatientRecords()
+  showPatients()
   // await fetchExpenses();
   // showExpenses();
   // drawBarChart();
-})();
+})()
 
 // -------------SIDEBAR TOGGLE------------------
-let sidebarOpen = false;
-let sidebar = document.getElementById("sidebar");
+let sidebarOpen = false
+let sidebar = document.getElementById('sidebar')
 
 function openSidebar() {
-  if(!sidebarOpen) {
-    sidebar.classList.add("sidebar-responsive");
-    sidebarOpen = true;
+  if (!sidebarOpen) {
+    sidebar.classList.add('sidebar-responsive')
+    sidebarOpen = true
   }
 }
 
 function closeSidebar() {
-  if(sidebarOpen) {
-    sidebar.classList.remove("sidebar-responsive");
-    sidebarOpen = false;
+  if (sidebarOpen) {
+    sidebar.classList.remove('sidebar-responsive')
+    sidebarOpen = false
   }
 }
-
 
 // ---------- CHARTS ----------
 // BAR CHART
 let barChartOptions = {
-  series: [{
-    data: [10, 8, 6, 4, 2],
-    name: "Patients served",
-  }],
+  series: [
+    {
+      data: [10, 8, 6, 4, 2],
+      name: 'Patients served',
+    },
+  ],
   chart: {
-    type: "bar",
-    background: "transparent",
+    type: 'bar',
+    background: 'transparent',
     height: 350,
     toolbar: {
       show: false,
     },
   },
-  colors: [
-    "#2962ff",
-    "#d50000",
-    "#2e7d32",
-    "#ff6d00",
-    "#583cb3",
-  ],
+  colors: ['#2962ff', '#d50000', '#2e7d32', '#ff6d00', '#583cb3'],
   plotOptions: {
     bar: {
       distributed: true,
       borderRadius: 4,
       horizontal: false,
-      columnWidth: "40%",
-    }
+      columnWidth: '40%',
+    },
   },
   dataLabels: {
     enabled: false,
@@ -208,7 +205,7 @@ let barChartOptions = {
     opacity: 1,
   },
   grid: {
-    borderColor: "#55596e",
+    borderColor: '#55596e',
     yaxis: {
       lines: {
         show: true,
@@ -222,89 +219,94 @@ let barChartOptions = {
   },
   legend: {
     labels: {
-      colors: "#f5f7ff",
+      colors: '#f5f7ff',
     },
     show: true,
-    position: "top",
+    position: 'top',
   },
   stroke: {
-    colors: ["transparent"],
+    colors: ['transparent'],
     show: true,
-    width: 2
+    width: 2,
   },
   tooltip: {
     shared: true,
     intersect: false,
-    theme: "dark",
+    theme: 'dark',
   },
   xaxis: {
-    categories: ["Alice", "Bob", "Charlie", "Dice", "Eustice"],
+    categories: ['Alice', 'Bob', 'Charlie', 'Dice', 'Eustice'],
     title: {
       style: {
-        color: "#f5f7ff",
+        color: '#f5f7ff',
       },
     },
     axisBorder: {
       show: true,
-      color: "#55596e",
+      color: '#55596e',
     },
     axisTicks: {
       show: true,
-      color: "#55596e",
+      color: '#55596e',
     },
     labels: {
       style: {
-        colors: "#f5f7ff",
+        colors: '#f5f7ff',
       },
     },
   },
   yaxis: {
     title: {
-      text: "Count",
+      text: 'Count',
       style: {
-        color:  "#f5f7ff",
+        color: '#f5f7ff',
       },
     },
     axisBorder: {
-      color: "#55596e",
+      color: '#55596e',
       show: true,
     },
     axisTicks: {
-      color: "#55596e",
+      color: '#55596e',
       show: true,
     },
     labels: {
       style: {
-        colors: "#f5f7ff",
+        colors: '#f5f7ff',
       },
     },
-  }
-};
+  },
+}
 
-let barChart = new ApexCharts(document.querySelector("#bar-chart"), barChartOptions);
-barChart.render();
-
+let barChart = new ApexCharts(
+  document.querySelector('#bar-chart'),
+  barChartOptions
+)
+barChart.render()
 
 // AREA CHART
 let areaChartOptions = {
-  series: [{
-    name: "In patients",
-    data: [31, 40, 28, 51, 42, 109, 100],
-  }, {
-    name: "Out patients",
-    data: [11, 32, 45, 32, 34, 52, 41],
-  }],
+  series: [
+    {
+      name: 'In patients',
+      data: [31, 40, 28, 51, 42, 109, 100],
+    },
+    {
+      name: 'Out patients',
+      data: [11, 32, 45, 32, 34, 52, 41],
+    },
+  ],
   chart: {
-    type: "area",
-    background: "transparent",
+    type: 'area',
+    background: 'transparent',
     height: 350,
     stacked: false,
     toolbar: {
       show: false,
     },
   },
-  colors: ["#00ab57", "#d50000"],
-  labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+  colors: ['#00ab57', '#d50000'],
+  labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
   dataLabels: {
     enabled: false,
   },
@@ -314,12 +316,12 @@ let areaChartOptions = {
       opacityTo: 0.1,
       shadeIntensity: 1,
       stops: [0, 100],
-      type: "vertical",
+      type: 'vertical',
     },
-    type: "gradient",
+    type: 'gradient',
   },
   grid: {
-    borderColor: "#55596e",
+    borderColor: '#55596e',
     yaxis: {
       lines: {
         show: true,
@@ -333,61 +335,60 @@ let areaChartOptions = {
   },
   legend: {
     labels: {
-      colors: "#f5f7ff",
+      colors: '#f5f7ff',
     },
     show: true,
-    position: "top",
+    position: 'top',
   },
   markers: {
     size: 6,
-    strokeColors: "#1b2635",
+    strokeColors: '#1b2635',
     strokeWidth: 3,
   },
   stroke: {
-    curve: "smooth",
+    curve: 'smooth',
   },
   xaxis: {
     axisBorder: {
-      color: "#55596e",
+      color: '#55596e',
       show: true,
     },
     axisTicks: {
-      color: "#55596e",
+      color: '#55596e',
       show: true,
     },
     labels: {
       offsetY: 5,
       style: {
-        colors: "#f5f7ff",
+        colors: '#f5f7ff',
       },
     },
   },
-  yaxis: 
-  [
+  yaxis: [
     {
       title: {
-        text: "Purchase Orders",
+        text: 'Purchase Orders',
         style: {
-          color: "#f5f7ff",
+          color: '#f5f7ff',
         },
       },
       labels: {
         style: {
-          colors: ["#f5f7ff"],
+          colors: ['#f5f7ff'],
         },
       },
     },
     {
       opposite: true,
       title: {
-        text: "Sales Orders",
+        text: 'Sales Orders',
         style: {
-          color:  "#f5f7ff",
+          color: '#f5f7ff',
         },
       },
       labels: {
         style: {
-          colors: ["#f5f7ff"],
+          colors: ['#f5f7ff'],
         },
       },
     },
@@ -395,10 +396,54 @@ let areaChartOptions = {
   tooltip: {
     shared: true,
     intersect: false,
-    theme: "dark",
+    theme: 'dark',
+  },
+}
+
+let areaChart = new ApexCharts(
+  document.querySelector('#area-chart'),
+  areaChartOptions
+)
+areaChart.render()
+
+async function fetchPatientRecords() {
+  try {
+    // let email = localStorage.getItem("userEmail");
+    const response = await fetch(`/api/v1/patients/?limit=${10}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include', // Always include cookies with the request
+    })
+    const res = await response.json()
+    console.log({ res })
+    localStorage.setItem('patientRecords', JSON.stringify(res))
+    showPatients()
+  } catch (err) {
+    console.log({ err })
   }
-};
+}
 
-let areaChart = new ApexCharts(document.querySelector("#area-chart"), areaChartOptions);
-areaChart.render();
-
+const showPatients = () => {
+  const patientsTable = document.getElementById('patients-table')
+  let patientRecords = JSON.parse(localStorage.getItem('patientRecords')) || []
+  patientsTable.innerHTML = ''
+  for (let i = 0; i < patientRecords.length; i++) {
+    patientsTable.innerHTML += `
+      <tr>
+        <td>${patientRecords[i].patient_id}</td>
+        <td>${patientRecords[i].first_name}</td>
+        <td>${patientRecords[i].last_name}</td>
+        <td>${new Date(patientRecords[i].date_of_birth).toLocaleDateString()}</td>
+        <td>${patientRecords[i].gender}</td>
+        <td>${patientRecords[i].language}</td>
+        <td>
+          <a class="editButton" onclick="editPatientRecord(${patientRecords[i].patient_id})">
+          <img class="material-icons-outlined" src="/assets/edit.svg" />
+        |
+          <a class="deleteButton" onclick="deletePatientRecord(${patientRecords[i].patient_id})">
+          <img class="material-icons-outlined" src="/assets/delete.svg" />
+        </td>
+      </tr>
+    `
+  }
+}
