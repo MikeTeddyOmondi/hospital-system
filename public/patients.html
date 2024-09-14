@@ -22,15 +22,42 @@
           <img class="material-icons-outlined" src="/assets/search.svg" />
         </div>
         <div class="header-right">
-          <img
-            class="material-icons-outlined"
-            src="/assets/notifications.svg"
-          />
-          <img class="material-icons-outlined" src="/assets/mail.svg" />
-          <img
-            class="material-icons-outlined"
-            src="/assets/account_circle.svg"
-          />
+          <div class="dropdown">
+            <img
+              class="material-icons-outlined"
+              src="/assets/notifications.svg"
+            />
+            <div class="dropdown-content">
+              <a href="#">Appointment made successfully.</a>
+              <hr />
+              <a href="#">Cancelled appointment successfully.</a>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <img class="material-icons-outlined" src="/assets/mail.svg" />
+            <div class="dropdown-content">
+              <a href="#">Inbox content one</a>
+              <hr />
+              <a href="#">Inbox content two</a>
+              <hr />
+              <a href="#">Inbox content three</a>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <img
+              class="material-icons-outlined dropdown-btn"
+              src="/assets/account_circle.svg"
+            />
+            <div class="dropdown-content">
+              <a href="#">User Profile</a>
+              <hr />
+              <a href="#">Account Settings</a>
+              <hr />
+              <a href="#">Logout</a>
+            </div>
+          </div>
         </div>
       </header>
       <!-- End Header -->
@@ -93,7 +120,7 @@
       <!-- End Sidebar -->
 
       <!-- Main -->
-      <main class="main-container">
+      <main class="main-container scroll-bar">
         <div class="main-title">
           <h2>PATIENTS</h2>
         </div>
@@ -118,15 +145,15 @@
           <h2>Patients Information</h2>
           <table id="table">
             <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Date of Birth</th>
-                    <th>Gender</th>
-                    <th>Language</th>
-                    <th>Actions</th>
-                </tr>
+              <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Language</th>
+                <th>Actions</th>
+              </tr>
             </thead>
             <tbody id="patients-table"></tbody>
           </table>
