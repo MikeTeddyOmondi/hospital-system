@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = '/dashboard'
       } else {
         // Show error message
-        authMsg.classList.toggle('auth-msg-show')
+        authMsg.classList.add('auth-msg-show')
         authMsg.textContent =
           'Login failed. Please check your credentials and try again.'
         authMsg.style.color = 'red'
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (error) {
       // Handle network or server errors
       console.error({ error })
-      authMsg.classList.toggle('auth-msg-show')
+      authMsg.classList.add('auth-msg-show')
       authMsg.textContent = 'An error occurred. Please try again.'
       authMsg.style.color = 'red'
     }
