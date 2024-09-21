@@ -1,39 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register - Hospital System</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
-</head>
-<body>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
     <header></header>
     <main>
       <div class="container">
         <div class="registration form">
           <h1>Signup</h1>
           <center>
-            <p id="auth-msg"></p>
+            <p id="auth-msg" class="auth-msg"></p>
           </center>
           <form id="signup-form" action="" method="POST">
-            <input type="text" id="username" name="username"  placeholder="Enter your username">
-            <input type="text" id="email" name="email"  placeholder="Enter your email">
-            <input type="password" id="password" name="password" placeholder="Enter a unique password">
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your unique password">
-            <input type="submit" id="formSubmitBtn" class="button" value="Signup">
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter your username"
+              onfocus="removeAuthMsg()"
+            />
+            <input
+              type="text"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              onfocus="removeAuthMsg()"
+            />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter a unique password"
+              onfocus="removeAuthMsg()"
+            />
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Confirm your unique password"
+              onfocus="removeAuthMsg()"
+            />
+            <input
+              type="submit"
+              id="formSubmitBtn"
+              class="button bouncy-button"
+              value="Signup"
+            />
           </form>
           <div class="signup">
-            <span class="signup">Already have an account?
-             <a href="/login" for="check">Login</a>
+            <span class="signup"
+              >Already have an account?
+              <a href="/login" for="check">Login</a>
             </span>
           </div>
         </div>
       </div>
     </main>
     <footer>
-        <p>&copy; 2024 Hospital System. All rights reserved.</p>
+      <p>&copy; 2024 Hospital System. All rights reserved.</p>
     </footer>
     <script src="./js/register.js"></script>
-</body>
+  </body>
 </html>

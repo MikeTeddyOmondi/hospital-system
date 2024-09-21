@@ -10,7 +10,7 @@
 }
 
 :root {
-  --primary-color: #009579
+  --primary-color: #009579;
 }
 
 body {
@@ -74,6 +74,20 @@ main {
   font-weight: 500;
   text-align: center;
   margin-bottom: 1.5rem;
+}
+
+.form .auth-msg {
+  display: none;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: pink;
+  padding: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form .auth-msg-show {
+  display: block;
 }
 
 .form input {
@@ -153,7 +167,8 @@ main {
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   20% {
@@ -184,13 +199,13 @@ footer {
 
 /* Medium <= 992px */
 
-@media screen and (max-width: 992px) {}
-
+@media screen and (max-width: 992px) {
+}
 
 /* Small <= 768px */
 
-@media screen and (max-width: 768px) {}
-
+@media screen and (max-width: 768px) {
+}
 
 /* Extra Small <= 576px */
 
@@ -203,14 +218,14 @@ footer {
   .container {
     width: 75%;
   }
-  
+
   .form header {
     font-size: 1rem;
     font-weight: 500;
     text-align: center;
     margin-bottom: 1rem;
   }
-  
+
   .form input {
     height: 48px;
     width: 100%;

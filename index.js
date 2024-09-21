@@ -9,9 +9,9 @@ const APP_PORT = PORT || 6677;
     await initializeDatabase();
     
     app.listen(PORT, () => {
-      console.log(`Application server listening on port ${APP_PORT}`);
+      console.log(`[#] Application server listening on port ${APP_PORT}`);
     });
   } catch (err) {
-    console.log({ application_error: `Error starting the application: ${err}`})
+    console.error({ application_error: `[!] Error starting the application: ${err}`})
   }
 })();

@@ -49,12 +49,12 @@ sessionStore
   .onReady()
   .then(() => {
     // MySQL session store ready for use.
-    console.log('Session store ready...')
+    console.log('[#] Session store ready!')
   })
   .catch(err => {
     // Something went wrong.
     console.error({
-      session_error: `Error initiating session store ${err.message}`,
+      session_error: `[!] Error initiating session store ${err.message}`,
     })
   })
 
